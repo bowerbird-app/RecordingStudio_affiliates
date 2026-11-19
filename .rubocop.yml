@@ -20,7 +20,7 @@ Layout/LineLength:
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*'
-    - 'lib/gem_template/hooks.rb'
+    - 'lib/recording_studio_affiliates/hooks.rb'
 
 Metrics/MethodLength:
   Exclude:
@@ -32,10 +32,11 @@ Metrics/AbcSize:
     - 'test/**/*'
     - 'lib/generators/**/*'
 
-# Allow empty blocks in tests (common for stubs/mocks)
+# Tests use empty blocks as stubs. The engine route set is empty in 0.1.0.
 Lint/EmptyBlock:
   Exclude:
     - 'test/**/*'
+    - 'config/routes.rb'
 
 # Allow nested method definitions in tests (common for testing behavior)
 Lint/NestedMethodDefinition:
@@ -50,5 +51,5 @@ Naming/VariableNumber:
 # Don't require super in service initialize methods
 Lint/MissingSuper:
   Exclude:
-    - 'lib/gem_template/services/**/*'
+    - 'lib/recording_studio_affiliates/services/**/*'
     - 'test/services/**/*'

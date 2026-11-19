@@ -15,7 +15,7 @@ require "minitest/autorun"
 # ---------------
 # 1. File Existence:
 #    - Gemspec, main lib file, version.rb, engine.rb
-#    - Controllers and views directories
+#    - Controllers directory
 #    - Generator files
 #
 # 2. Content Verification:
@@ -92,12 +92,6 @@ class RenameVerificationTest < Minitest::Test
     controllers_dir = File.join(@root, "app", "controllers", @gem_name)
     assert Dir.exist?(controllers_dir),
            "Expected controllers directory at #{controllers_dir}"
-  end
-
-  def test_views_directory_exists
-    views_dir = File.join(@root, "app", "views", @gem_name)
-    assert Dir.exist?(views_dir),
-           "Expected views directory at #{views_dir}"
   end
 
   # ============================================================
@@ -202,19 +196,6 @@ class RenameVerificationTest < Minitest::Test
     content = File.read(path)
     assert_match(/^module #{@pascal_name}$/, content,
                  "Application controller should be in module #{@pascal_name}")
-  end
-
-  def test_home_controller_exists
-    path = File.join(@root, "app", "controllers", @gem_name, "home_controller.rb")
-    assert File.exist?(path),
-           "Home controller should exist at #{path}"
-  end
-
-  def test_home_controller_has_correct_module
-    path = File.join(@root, "app", "controllers", @gem_name, "home_controller.rb")
-    content = File.read(path)
-    assert_match(/^module #{@pascal_name}$/, content,
-                 "Home controller should be in module #{@pascal_name}")
   end
 
   # ============================================================

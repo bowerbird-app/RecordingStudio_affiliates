@@ -1,24 +1,11 @@
-# README
+# Dummy host
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app exists to boot `recording_studio_affiliates`. It is not the product.
 
-Things you may want to cover:
+```bash
+bundle install
+bin/rails db:prepare
+bin/dev
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Open `http://localhost:3000/up` to confirm the process is up. The engine is mounted at `/recording_studio_affiliates` and has no screens in version 0.1.0.
