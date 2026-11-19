@@ -10,7 +10,6 @@ gem "sprockets-rails"
 
 group :development, :test do
   gem "debug"
-  gem "flatpack-checker", github: "bowerbird-app/flatpack-checker"
 end
 
 group :development do

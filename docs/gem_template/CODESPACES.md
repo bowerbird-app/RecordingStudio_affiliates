@@ -32,7 +32,6 @@ The `postCreateCommand` in `.devcontainer/devcontainer.json` executes:
 
 ```bash
 git lfs install && \
-bundle config set --local github.com "x-access-token:${BOWERBIRD_ORG_CI_TOKEN}" && \
 bundle install && \
 cd test/dummy && \
 bundle install && \
@@ -42,7 +41,6 @@ bundle exec rails tailwindcss:build
 
 This:
 - Installs Git LFS (if needed)
-- Configures Bundler to authenticate to private GitHub gem sources
 - Installs gem dependencies for both the engine and dummy app
 - Prepares the PostgreSQL database (creates, migrates, seeds)
 - Builds TailwindCSS assets
@@ -75,30 +73,6 @@ Set automatically inside the container:
 | `DB_PASSWORD` | `postgres` |
 | `REDIS_URL` | `redis://redis:6379/0` |
 | `CODESPACES` | `true` |
-
----
-
-## Private GitHub Dependency Access
-
-This template now installs `flatpack-checker` from the private repository `bowerbird-app/flatpack-checker`.
-
-Codespaces or local environments must provide `BOWERBIRD_ORG_CI_TOKEN` with read access to that repository.
-
-To configure a Codespaces secret:
-
-1. Open the repository on GitHub.
-2. Go to **Settings** -> **Secrets and variables** -> **Codespaces**.
-3. Add `BOWERBIRD_ORG_CI_TOKEN` with a token that can read `bowerbird-app/flatpack-checker`.
-
-To configure the current shell manually:
-
-```bash
-export BOWERBIRD_ORG_CI_TOKEN=your_token_here
-export BUNDLE_GITHUB__COM="x-access-token:${BOWERBIRD_ORG_CI_TOKEN}"
-bundle install
-```
-
-If `bundle install` fails with GitHub `403`, the token is either missing or does not have access to the private repository.
 
 ---
 
@@ -161,7 +135,6 @@ If you change `.devcontainer/` files:
 
 | Issue | Solution |
 |-------|----------|
-| `bundle install` fails with `403` for `flatpack-checker` | Set `BOWERBIRD_ORG_CI_TOKEN` and rerun `bundle config set --local github.com "x-access-token:${BOWERBIRD_ORG_CI_TOKEN}"`. |
 | Container fails to start | Check Docker Compose logs in the terminal. |
 | Database connection refused | Ensure `db` service is healthy (`docker ps`). |
 | Tailwind not rebuilding | Restart `bin/dev` or run `bin/rails tailwindcss:build`. |
