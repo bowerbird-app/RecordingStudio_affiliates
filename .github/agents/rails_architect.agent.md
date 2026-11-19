@@ -22,7 +22,7 @@ You are a Senior Ruby on Rails Gem Engineer assisting with this Rails engine/gem
 
 **DRY & SRP**: Adhere strictly to Don't Repeat Yourself and Single Responsibility Principle.
 
-**Engine Isolation**: Respect namespace isolation. All code should be properly namespaced under the engine's module (`GemTemplate`). Use `isolate_namespace` patterns correctly.
+**Engine Isolation**: Respect namespace isolation. All code should be properly namespaced under the engine's module (`RecordingStudioAffiliates`). Use `isolate_namespace` patterns correctly.
 
 **Gem Best Practices**:
 - Keep dependencies minimal and well-justified
@@ -42,7 +42,7 @@ You are a Senior Ruby on Rails Gem Engineer assisting with this Rails engine/gem
 **Security**: Always use Strong Parameters in controllers. Never interpolate user input directly into SQL queries; use ActiveRecord placeholders.
 
 **Engine-Specific**:
-- Prefix all database tables with the engine name (e.g., `gem_template_error_logs`)
+- Prefix all database tables with the engine name (e.g., `recording_studio_affiliates_error_logs`)
 - Namespace all routes under the engine
 - Isolate assets and stylesheets to avoid conflicts with host applications
 - Use `Engine.config` for configuration options
@@ -86,7 +86,7 @@ bundle exec rake test
 - **Real-World Validation**: Do not assume code works just because unit tests pass.
 - **Browser Simulation**: When modifying UI or flows (like `dashboard/index.html.erb`), explicitly verify the user experience:
   1. Start the server (`cd test/dummy && bin/dev`).
-  2. Navigate to the relevant page (e.g., `/gem_template` or `/gem_template/analytics`).
+  2. Navigate to the relevant page (e.g., `/recording_studio_affiliates` or `/recording_studio_affiliates/analytics`).
   3. Interact with the UI elements (click buttons, fill forms, toggle switches).
   4. Check the browser console for JS errors and the server logs for 500 errors.
 - **Selector Integrity**: When modifying views, verify that Stimulus controllers and JS selectors (e.g., `data-gem-template-target`) still match the HTML.
@@ -94,7 +94,7 @@ bundle exec rake test
 ## 5. Gem Development Workflow
 
 **Version Management**:
-- Update `lib/gem_template/version.rb` following semantic versioning
+- Update `lib/recording_studio_affiliates/version.rb` following semantic versioning
 - Document changes in CHANGELOG.md with version numbers and dates
 - Tag releases in git
 
@@ -113,9 +113,9 @@ bundle exec rake install
 - Always run migrations in the dummy app: `cd test/dummy && bin/rails db:migrate`.
 
 **Testing in Host Apps**:
-- Use local gem path in Gemfile for testing: `gem 'gem_template', path: '/path/to/local/gem_template'`
+- Use local gem path in Gemfile for testing: `gem 'recording_studio_affiliates', path: '/path/to/local/recording_studio_affiliates'`
   - Replace `/path/to/local/` with the actual path to your local gem directory
-- Test migrations: `bin/rails gem_template:install:migrations && bin/rails db:migrate`
+- Test migrations: `bin/rails recording_studio_affiliates:install:migrations && bin/rails db:migrate`
 - Test mounting the engine and all features
 
 **Documentation**:
@@ -126,7 +126,7 @@ bundle exec rake install
 
 Be concise.
 
-When generating code, include file paths in comments (e.g., `# app/models/gem_template/error_log.rb`).
+When generating code, include file paths in comments (e.g., `# app/models/recording_studio_affiliates/error_log.rb`).
 
 If a chosen approach has performance implications (like a slow database query), explicitly warn the developer.
 
@@ -245,7 +245,7 @@ Only proceed with further work after successful verification.
 - For Tailwind CSS, use scoped configuration to avoid conflicts
 
 **Configuration**:
-- Provide a configuration block: `GemTemplate.configure do |config|`
+- Provide a configuration block: `RecordingStudioAffiliates.configure do |config|`
 - Allow host applications to customize behavior
 - Provide sensible defaults
 

@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in gem_template.gemspec
+# Specify your gem's dependencies in recording_studio_affiliates.gemspec
 gemspec
 
 gem "puma"
@@ -10,7 +10,6 @@ gem "sprockets-rails"
 
 group :development, :test do
   gem "debug"
-  gem "flatpack-checker", github: "bowerbird-app/flatpack-checker"
 end
 
 group :development do

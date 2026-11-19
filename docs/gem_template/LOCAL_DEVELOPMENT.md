@@ -33,30 +33,13 @@ git clone https://github.com/bowerbird-app/gem_template.git
 cd gem_template
 ```
 
-### 2. Configure GitHub Access
-
-The root `Gemfile` installs `flatpack-checker` from the private repository `bowerbird-app/flatpack-checker`.
-
-Export an org token with read access before running Bundler:
-
-```bash
-export BOWERBIRD_ORG_CI_TOKEN=your_token_here
-export BUNDLE_GITHUB__COM="x-access-token:${BOWERBIRD_ORG_CI_TOKEN}"
-```
-
-You can also persist it in Bundler's local config:
-
-```bash
-bundle config set --local github.com "x-access-token:${BOWERBIRD_ORG_CI_TOKEN}"
-```
-
-### 3. Install Gem Dependencies
+### 2. Install Gem Dependencies
 
 ```bash
 bundle install
 ```
 
-### 4. Setup the Dummy App
+### 3. Setup the Dummy App
 
 ```bash
 cd test/dummy
@@ -186,8 +169,6 @@ bin/rails db:migrate
 | `DB_NAME` | `app_development` | Database name |
 | `REDIS_URL` | `redis://localhost:6379/0` | Redis connection URL |
 | `PORT` | `3000` | Rails server port |
-| `BOWERBIRD_ORG_CI_TOKEN` | none | GitHub token with read access to `bowerbird-app/flatpack-checker` |
-| `BUNDLE_GITHUB__COM` | none | Bundler GitHub credential, usually `x-access-token:${BOWERBIRD_ORG_CI_TOKEN}` |
 
 ---
 
@@ -200,7 +181,6 @@ bin/rails db:migrate
 | Tailwind styles missing | Run `bin/rails tailwindcss:build`. |
 | Port 3000 in use | Use `PORT=3001 bin/dev`. |
 | Redis connection refused | Start Redis: `redis-server` or `brew services start redis`. |
-| Bundle install fails with `403` for `flatpack-checker` | Export `BOWERBIRD_ORG_CI_TOKEN` and set `BUNDLE_GITHUB__COM` before running Bundler. |
 | Bundle install fails | Check Ruby version matches `.ruby-version` (3.3.0). |
 
 ---

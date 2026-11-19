@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Mount the GemTemplate engine
-  mount GemTemplate::Engine, at: "/gem_template"
+  # Mount the RecordingStudioAffiliates engine
+  mount RecordingStudioAffiliates::Engine, at: "/recording_studio_affiliates"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  root to: redirect("/gem_template")
+  # The engine has no screens in 0.1.0. The host root is the health check.
+  root to: redirect("/up")
 end
